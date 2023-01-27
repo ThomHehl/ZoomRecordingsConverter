@@ -1,5 +1,7 @@
 package com.heavyweightsoftware.zoomrecordingsconverter.zoom;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.heavyweightsoftware.zoomrecordingsconverter.HttpConnectionUtils.FullResponseBuilder;
 import com.heavyweightsoftware.zoomrecordingsconverter.HttpConnectionUtils.ParameterStringBuilder;
 import com.heavyweightsoftware.zoomrecordingsconverter.RecordingsAccount;
@@ -29,7 +31,8 @@ public class ZoomAccount extends RecordingsAccount {
     private static final String PROP_NAME = "zoom.properties";
     private static final String REQUEST_POST = "POST";
 
-    private Properties zoomProperties = new Properties();
+    private String accessToken;
+    private final Properties zoomProperties = new Properties();
 
     public ZoomAccount(File credentialsRoot) {
         loadZoomProperties(credentialsRoot);
@@ -54,10 +57,8 @@ public class ZoomAccount extends RecordingsAccount {
             URL url = new URL("https://zoom.us/oauth/token");
             con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod(REQUEST_POST);
-        } catch (ProtocolException pe) {
+        } catch (IOException pe) {
             throw new RuntimeException("Error connecting to zoom", pe);
-        } catch (IOException ioe) {
-            throw new RuntimeException("Error connecting to zoom", ioe);
         }
 
         con.setDoOutput(true);
@@ -81,15 +82,24 @@ public class ZoomAccount extends RecordingsAccount {
             throw new RuntimeException("Error retrieving response code", ioe);
         }
 
-        String authCode = readUrlString(con);
+        String response = readUrlString(con);
+        processResponse(response);
     }
 
-    private void handleConnectionError(String msg, HttpURLConnection con, int status) {
-        throw new RuntimeException("Authenticate returned " + status);
+    private void processResponse(String response) {
+        ObjectMapper mapper = new ObjectMapper();
+        ZoomAuthenticationPacket packet;
+        try {
+            packet = mapper.readValue(response, ZoomAuthenticationPacket.class);
+        } catch (JsonProcessingException jse) {
+            throw new RuntimeException("Error parsing:" + response, jse);
+        }
+
+        accessToken = packet.access_token;
     }
 
     private String readUrlString(HttpURLConnection con) {
-        StringBuffer content = new StringBuffer();
+        StringBuilder content = new StringBuilder();
 
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -122,7 +132,7 @@ public class ZoomAccount extends RecordingsAccount {
         sb.append(" ");
         sb.append(encodedString);
 
-        con.setRequestProperty(KEY_AUTHORIZATION, encodedString);
+        con.setRequestProperty(KEY_AUTHORIZATION, sb.toString());
     }
 
     private void setAuthenticateParameters(HttpURLConnection con) {
@@ -138,5 +148,12 @@ public class ZoomAccount extends RecordingsAccount {
         } catch (IOException ioe) {
             throw new RuntimeException("Error setting parameters", ioe);
         }
+    }
+
+    private static class ZoomAuthenticationPacket {
+        public String access_token;
+        public int expires_in;
+        public String token_type;
+        public String scope;
     }
 }
