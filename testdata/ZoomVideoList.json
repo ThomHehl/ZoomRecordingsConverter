@@ -1,0 +1,94 @@
+{
+  "from": "2023-01-29",
+  "to": "2023-01-30",
+  "page_count": 1,
+  "page_size": 30,
+  "total_records": 2,
+  "next_page_token": "",
+  "meetings": [
+    {
+      "uuid": "oVvkZtomQDWn4T6OUI52AA==",
+      "id": 82510495958,
+      "account_id": "oz3EFApURnK0U_z4WQwBXw",
+      "host_id": "j_zVhovMRdWqoL0yOlXuag",
+      "topic": "Radically Fit ",
+      "type": 3,
+      "start_time": "2023-01-30T12:54:26Z",
+      "timezone": "America/New_York",
+      "duration": 50,
+      "total_size": 196080964,
+      "recording_count": 2,
+      "share_url": "https://us02web.zoom.us/rec/share/IS-RizEAxygWdhi43OQMxfyiuQNL2czOCWhE7LnH_wZmVIWWzM6mnwBLgryBHArZ.pofoYktGR6Pq4o23",
+      "recording_files": [
+        {
+          "id": "09239891-d15d-439e-acdb-b9fd74fdf1e9",
+          "meeting_id": "oVvkZtomQDWn4T6OUI52AA==",
+          "recording_start": "2023-01-30T12:54:26Z",
+          "recording_end": "2023-01-30T13:44:31Z",
+          "file_type": "M4A",
+          "file_extension": "M4A",
+          "file_size": 47809693,
+          "play_url": "https://us02web.zoom.us/rec/play/KH3pXsp5UTIWoKZuA-lZenJe5b5_vhUaSdoXLb7LGff9M463B4BpB1HK0dKne471XM38dGGlWPTBx1s6.59iQCCzmYQqdDmPd",
+          "download_url": "https://us02web.zoom.us/rec/download/KH3pXsp5UTIWoKZuA-lZenJe5b5_vhUaSdoXLb7LGff9M463B4BpB1HK0dKne471XM38dGGlWPTBx1s6.59iQCCzmYQqdDmPd",
+          "status": "completed",
+          "recording_type": "audio_only"
+        },
+        {
+          "id": "78bd26cf-9b2f-47c1-8b4c-d8222b00ff5c",
+          "meeting_id": "oVvkZtomQDWn4T6OUI52AA==",
+          "recording_start": "2023-01-30T12:54:26Z",
+          "recording_end": "2023-01-30T13:44:31Z",
+          "file_type": "MP4",
+          "file_extension": "MP4",
+          "file_size": 148271271,
+          "play_url": "https://us02web.zoom.us/rec/play/Mi3JNHwywdkkfKhG0XXnb7vz6CWxSprg-Ui9XsnPGzDW26pM4MhHn0ghNYzwixXE_Ee0b-FpSqjcuFR4.unKKWnaX6_PaXE8i",
+          "download_url": "https://us02web.zoom.us/rec/download/Mi3JNHwywdkkfKhG0XXnb7vz6CWxSprg-Ui9XsnPGzDW26pM4MhHn0ghNYzwixXE_Ee0b-FpSqjcuFR4.unKKWnaX6_PaXE8i",
+          "status": "completed",
+          "recording_type": "shared_screen_with_speaker_view"
+        }
+      ]
+    },
+    {
+      "uuid": "pkC8XohtTuuL7fPd38FGEg==",
+      "id": 85707616882,
+      "account_id": "oz3EFApURnK0U_z4WQwBXw",
+      "host_id": "j_zVhovMRdWqoL0yOlXuag",
+      "topic": "Fascia Release & Flow ",
+      "type": 3,
+      "start_time": "2023-01-29T21:30:09Z",
+      "timezone": "America/New_York",
+      "duration": 77,
+      "total_size": 266927953,
+      "recording_count": 2,
+      "share_url": "https://us02web.zoom.us/rec/share/fsluQq4DWhkxb1ZZwq7CuEtzbS-VS_KI87eM9tT5g1BKr5zKS8zNCzugb9EkWqv7.HNKhHZl0Fk7ZQcbP",
+      "recording_files": [
+        {
+          "id": "4cd915b4-a984-4363-acd8-2bc3863cc391",
+          "meeting_id": "pkC8XohtTuuL7fPd38FGEg==",
+          "recording_start": "2023-01-29T21:30:10Z",
+          "recording_end": "2023-01-29T22:47:18Z",
+          "file_type": "MP4",
+          "file_extension": "MP4",
+          "file_size": 193267185,
+          "play_url": "https://us02web.zoom.us/rec/play/ihh-1g_h8eTIi7oPXg9_yzk3loT0BQ8Z3opBci1-aRyMk0KThZeKY03pUZtFBb6K-dSDBom84_NskLBN.CpPPBNNvErJ25drj",
+          "download_url": "https://us02web.zoom.us/rec/download/ihh-1g_h8eTIi7oPXg9_yzk3loT0BQ8Z3opBci1-aRyMk0KThZeKY03pUZtFBb6K-dSDBom84_NskLBN.CpPPBNNvErJ25drj",
+          "status": "completed",
+          "recording_type": "shared_screen_with_speaker_view"
+        },
+        {
+          "id": "8feb4e29-2619-4890-a9a1-d4d2c2f9ed97",
+          "meeting_id": "pkC8XohtTuuL7fPd38FGEg==",
+          "recording_start": "2023-01-29T21:30:10Z",
+          "recording_end": "2023-01-29T22:47:18Z",
+          "file_type": "M4A",
+          "file_extension": "M4A",
+          "file_size": 73660768,
+          "play_url": "https://us02web.zoom.us/rec/play/EOOPRWM_wSDwJU7nAVM8lwsoTUDPftzF_h6MXTex0IqhhwD8zNxBT6DSGB2G7KNblVWVvgoCxAM7y0Ve.Y0czLARcTGqbZCOG",
+          "download_url": "https://us02web.zoom.us/rec/download/EOOPRWM_wSDwJU7nAVM8lwsoTUDPftzF_h6MXTex0IqhhwD8zNxBT6DSGB2G7KNblVWVvgoCxAM7y0Ve.Y0czLARcTGqbZCOG",
+          "status": "completed",
+          "recording_type": "audio_only"
+        }
+      ]
+    }
+  ]
+}

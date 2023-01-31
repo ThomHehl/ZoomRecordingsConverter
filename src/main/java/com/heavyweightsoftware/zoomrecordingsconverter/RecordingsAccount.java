@@ -3,6 +3,8 @@ package com.heavyweightsoftware.zoomrecordingsconverter;
 import com.heavyweightsoftware.zoomrecordingsconverter.zoom.ZoomAccount;
 
 import java.io.File;
+import java.util.Calendar;
+import java.util.List;
 
 public abstract class RecordingsAccount {
     public static final String ZOOM_ACCOUNT = "zoom";
@@ -23,4 +25,11 @@ public abstract class RecordingsAccount {
     }
 
     protected abstract void authenticate();
+
+    /**
+     * List the videos since the cutoff date
+     * @param since the cutoff date to download videos after
+     * @return a list of videos
+     */
+    public abstract List<VideoRecording> listVideos(Calendar since);
 }
