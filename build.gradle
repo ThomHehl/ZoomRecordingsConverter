@@ -8,10 +8,17 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 dependencies {
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.1'
+    implementation (
+            group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.1',
+    )
+
+    implementation name: 'heavyweight-util-1.13'
 
     testImplementation (
         'org.junit.jupiter:junit-jupiter-api:5.8.1',

@@ -6,10 +6,12 @@ import com.heavyweightsoftware.zoomrecordingsconverter.HttpConnectionUtils.FullR
 import com.heavyweightsoftware.zoomrecordingsconverter.HttpConnectionUtils.ParameterStringBuilder;
 import com.heavyweightsoftware.zoomrecordingsconverter.RecordingsAccount;
 import com.heavyweightsoftware.zoomrecordingsconverter.VideoRecording;
+import com.heavyweightsoftware.util.DateHelper;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.ZonedDateTime;
 import java.util.*;
 
 public class ZoomAccount extends RecordingsAccount {
@@ -134,7 +136,26 @@ public class ZoomAccount extends RecordingsAccount {
     public static List<VideoRecording> buildVideoList(ZoomListRecordingsPacket packet) {
         List<VideoRecording> result = new ArrayList<>();
 
+        for (ZoomRecordedMeetingPacket meetingPacket : packet.meetings) {
+            VideoRecording videoRecording = new VideoRecording();
+            result.add(videoRecording);
 
+            String str = meetingPacket.topic.trim();
+            videoRecording.setTitle(str);
+            videoRecording.setUuid(meetingPacket.uuid);
+
+            ZonedDateTime startTime = DateHelper.toZonedDateTime(meetingPacket.start_time);
+            videoRecording.setDateTime(startTime);
+
+            for(ZoomRecordingFile recordingFile : meetingPacket.recording_files) {
+                if(recordingFile.file_type == ZoomFileType.MP4) {
+                    videoRecording.setDownloadUrl(recordingFile.download_url);
+                    videoRecording.setExtension(VideoRecording.EXTENSION_MP4);
+
+                    break;
+                }
+            }
+        }
 
         return result;
     }
@@ -259,7 +280,7 @@ public class ZoomAccount extends RecordingsAccount {
         public TimeZone timezone;
         public long id;
         public int recording_count;
-        public Calendar start_time;
+        public String start_time;
         public String topic;
         public int total_size;
         public ZoomMeetingType type;

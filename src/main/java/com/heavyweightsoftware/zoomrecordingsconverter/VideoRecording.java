@@ -4,6 +4,8 @@ import java.net.URL;
 import java.time.ZonedDateTime;
 
 public class VideoRecording {
+    public static final String EXTENSION_MP4 = ".mp4";
+
     private String uuid;
     private String title;
     private String extension;
